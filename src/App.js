@@ -14,10 +14,6 @@ function App() {
 
   /**keep the focus on the input after the click the plus icon */
   const inputRef = useRef();
-/* 
-  useEffect(()=>{
-   ,[]
-  })  */
 
   function handleInputs(id) {
     const listItems = items.map((item)=>
