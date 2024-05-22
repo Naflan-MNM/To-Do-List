@@ -7,26 +7,40 @@ import SearchItems from './SearchItems.js';
 import { useRef } from 'react';
 
 function App() {
-  const [items,setItems] = useState( JSON.parse(localStorage.getItem('ToDo-list')) || []);
+  const API_URL = 'http://localhost:3500/itemsd'
+  const [items,setItems] = useState([]);
   const [newItem,setNewItem] = useState('')
   /* for search item*/
   const [search,setSearch]=useState('');
+  /* state for displying error */
 
   /**keep the focus on the input after the click the plus icon */
   const inputRef = useRef();
+
+  useEffect(()=>{
+    const fetchitem = async()=>{
+      try{
+        const response = await fetch(API_URL)
+        const listItems = await response.json()
+        setItems(listItems)
+
+      }catch (err){
+        console.log(err.message)
+      }
+    }
+    (async () => await fetchitem())();
+
+  },[])
 
   function handleInputs(id) {
     const listItems = items.map((item)=>
       id === item.id ? {...item, checked:!item.checked} : item);
     setItems(listItems);
-    localStorage.setItem("ToDo-list",JSON.stringify(listItems))
   }
 
   function handleTrash(id){
     const listItems = items.filter((item)=> id!==item.id);
     setItems(listItems);
-    localStorage.setItem("ToDo-list",JSON.stringify(listItems))
-  
   }
 
   /* Add Items section */
@@ -40,7 +54,6 @@ function App() {
     const addNewItem = {id, checked:false, item}
     const listItems = [...items,addNewItem];
     setItems(listItems);
-    localStorage.setItem("ToDo-list",JSON.stringify(listItems));
   }
 
   return (

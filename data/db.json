@@ -6,12 +6,12 @@
             "item":"learn HTML"
         },
         {
-            "id":1,
+            "id":2,
             "checked":false,
             "item":"learn CSS"
         },
         {
-            "id":1,
+            "id":3,
             "checked":false,
             "item":"React.js"
         }
