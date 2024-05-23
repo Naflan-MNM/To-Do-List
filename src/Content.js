@@ -4,7 +4,7 @@ import { IoTrash } from "react-icons/io5";
 
 const Content = ({items, handleInputs ,handleTrash}) => {
   return (
-    <main>
+    <>
       {items.length !== 0 ?(
         <ul>
           {items.map((item) => (
@@ -24,7 +24,7 @@ const Content = ({items, handleInputs ,handleTrash}) => {
         <h3>Empty List Item</h3>
       )}
        
-    </main>
+    </>
   )
 }
 
