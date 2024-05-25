@@ -49,11 +49,27 @@ function App() {
     const listItems = items.map((item)=>
       id === item.id ? {...item, checked:!item.checked} : item);
     setItems(listItems);
+
+
+    /* const pushOption = {
+      method:'PUSH',
+      header:{
+        'Content-Type':'application/json'
+      },
+      body:
+    } */
   }
 
-  function handleTrash(id){
+  const handleTrash = async(id)=>{
     const listItems = items.filter((item)=> id!==item.id);
     setItems(listItems);
+
+    const deleteOption={
+      method:'DELETE'
+    }
+    const ITEM_URL  = `${API_URL}/${id}`
+    const result = await apiRequest(ITEM_URL,deleteOption)
+    if(result) setFetchError(result)
   }
 
   /* Add Items section */
