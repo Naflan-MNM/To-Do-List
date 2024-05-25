@@ -5,6 +5,7 @@ import { useState,useEffect } from 'react';
 import AddItems from './AddItems.js';
 import SearchItems from './SearchItems.js';
 import { useRef } from 'react';
+import apiRequest from './apiRequest.js';
 
 function App() {
   const API_URL = 'http://localhost:3500/items'
@@ -61,11 +62,23 @@ function App() {
     addItem(newItem)
     setNewItem('')
   }
-  const addItem = (item) =>{
+  const addItem = async(item) =>{
     const id = (items.length)+1
     const addNewItem = {id, checked:false, item}
     const listItems = [...items,addNewItem];
     setItems(listItems);
+
+    const postOption = {
+      method:'POST',
+      header:{
+        'content-Type':'application/json'
+      },
+      body:JSON.stringify(addNewItem)
+    }
+
+    const result  = await apiRequest(API_URL,postOption)
+    if(result) setFetchError(result)
+
   }
 
   return (
