@@ -2,23 +2,33 @@
   "items": [
     {
       "id": "1",
-      "checked": true,
-      "item": "learn HTML"
+      "checked": false,
+      "item": "HTML"
     },
     {
       "id": "2",
-      "checked": false,
-      "item": "learn CSS"
+      "checked": true,
+      "item": "CSS"
     },
     {
       "id": "3",
       "checked": false,
-      "item": "React.js"
+      "item": "react.js"
     },
     {
       "id": "4",
       "checked": false,
       "item": "Git Tutorial"
+    },
+    {
+      "id": "5",
+      "checked": false,
+      "item": "code reaction"
+    },
+    {
+      "id": 6,
+      "checked": false,
+      "item": "javascript"
     }
   ]
 }

@@ -45,19 +45,23 @@ function App() {
       (async () => await fetchitem())()},2000)
   },[])
 
-  function handleInputs(id) {
+  const handleInputs=async(id)=> {
     const listItems = items.map((item)=>
       id === item.id ? {...item, checked:!item.checked} : item);
     setItems(listItems);
 
-
-    /* const pushOption = {
-      method:'PUSH',
+    const updateData = listItems.filter((item)=>
+      item.id === id)
+    const updateOption={
+      method:'PATCH',
       header:{
-        'Content-Type':'application/json'
+        'content-style' : 'application/json'
       },
-      body:
-    } */
+      body:JSON.stringify({checked:(updateData[0].checked)})
+    }
+    const ITEM_URL  = `${API_URL}/${id}`
+    const result = await apiRequest(ITEM_URL,updateOption)
+    if(result) setFetchError(result)
   }
 
   const handleTrash = async(id)=>{
@@ -79,7 +83,7 @@ function App() {
     setNewItem('')
   }
   const addItem = async(item) =>{
-    const id = (items.length)+1
+    const id = items.length ? parseInt(items[items.length - 1].id, 10) + 1 : 1;
     const addNewItem = {id, checked:false, item}
     const listItems = [...items,addNewItem];
     setItems(listItems);
