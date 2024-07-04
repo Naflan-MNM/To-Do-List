@@ -2,7 +2,7 @@
   "items": [
     {
       "id": "1",
-      "checked": false,
+      "checked": true,
       "item": "HTML"
     },
     {
@@ -12,8 +12,8 @@
     },
     {
       "id": "3",
-      "checked": false,
-      "item": "react.js"
+      "checked": true,
+      "item": "JavaScript"
     },
     {
       "id": "4",
@@ -26,9 +26,19 @@
       "item": "code reaction"
     },
     {
-      "id": 6,
+      "id": "6",
       "checked": false,
-      "item": "javascript"
+      "item": "Mongo-DB"
+    },
+    {
+      "id": "7",
+      "checked": false,
+      "item": "Node.js"
+    },
+    {
+      "id": "8",
+      "checked": false,
+      "item": "Express.js"
     }
   ]
 }
