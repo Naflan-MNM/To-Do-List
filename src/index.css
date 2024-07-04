@@ -18,6 +18,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 /* reset end */
+
+
 .App {
   display: flex;
   flex-direction: column;
@@ -92,6 +94,7 @@ ul li::before {
   min-height: 48px;
   cursor: pointer;
   margin-right: 0.5rem;
+  color: green !important;
 }
 
 .item input[type="checkbox"]:focus + label {
