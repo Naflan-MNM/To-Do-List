@@ -115,7 +115,7 @@ function App() {
         setNewItem = {setNewItem}
         handleSubmit = {handleSubmit}
       />
-      <main className='main'>
+      <main>
         {isLoading ? (
             <h5>Items Loading...</h5>
           ) : fetchError ? (
