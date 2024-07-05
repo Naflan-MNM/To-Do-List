@@ -6,9 +6,10 @@ import AddItems from './AddItems.js';
 import SearchItems from './SearchItems.js';
 import { useRef } from 'react';
 import apiRequest from './apiRequest.js';
+import Pagenotfound from './Pagenotfound.js';
 
 function App() {
-  const API_URL = 'http://localhost:3500/items'
+  const API_URL = 'http://localhost:3500/itemss'
   const [items,setItems] = useState([]);
   const [newItem,setNewItem] = useState('')
 
@@ -29,7 +30,7 @@ function App() {
       try{
         const response = await fetch(API_URL);
         if (!response.ok) {
-          throw new Error('404: Items not found');
+          throw new Error('The items not found');
         }
         const listItems = await response.json();
         setItems(listItems);
@@ -42,7 +43,7 @@ function App() {
       }
     }
     setTimeout(()=>{
-      (async () => await fetchitem())()},2000)
+      (async () => await fetchitem())()},3000)
   },[])
 
   const handleInputs=async(id)=> {
@@ -119,7 +120,9 @@ function App() {
         {isLoading ? (
             <h5>Items Loading...</h5>
           ) : fetchError ? (
-            <h5>{fetchError}</h5>
+            <Pagenotfound
+              fetchError={fetchError}
+            />
           ) : (
           <Content
             items={items.filter((item) => item.item.toLowerCase().includes(search.toLowerCase()))}
