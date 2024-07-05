@@ -12,12 +12,12 @@
     },
     {
       "id": "3",
-      "checked": true,
+      "checked": false,
       "item": "JavaScript"
     },
     {
       "id": "4",
-      "checked": true,
+      "checked": false,
       "item": "Git Tutorial"
     },
     {
