@@ -209,3 +209,14 @@ button:hover {
   outline: none;
   background-color:#e5e6e4;
 }
+.pagenotfound{
+  display: flex;
+  justify-content: flex-end;
+  padding-bottom: 0.2rem;
+  color: #3a8f92;
+  font-weight:bold;
+  background-image: url("../Images/pagenotfound.jpg");
+  background-size:cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
