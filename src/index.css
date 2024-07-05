@@ -220,3 +220,7 @@ button:hover {
   background-position: center;
   background-repeat: no-repeat;
 }
+.progress{
+  display: flex;
+  justify-content: center;
+}
