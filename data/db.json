@@ -17,7 +17,7 @@
     },
     {
       "id": "4",
-      "checked": false,
+      "checked": true,
       "item": "Git Tutorial"
     },
     {
@@ -29,16 +29,6 @@
       "id": "6",
       "checked": false,
       "item": "Mongo-DB"
-    },
-    {
-      "id": "7",
-      "checked": false,
-      "item": "Node.js"
-    },
-    {
-      "id": "8",
-      "checked": false,
-      "item": "Express.js"
     }
   ]
 }
