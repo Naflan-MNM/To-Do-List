@@ -7,9 +7,10 @@ import SearchItems from './SearchItems.js';
 import { useRef } from 'react';
 import apiRequest from './apiRequest.js';
 import Pagenotfound from './Pagenotfound.js';
+import ItemsLoading from './ItemsLoading.js';
 
 function App() {
-  const API_URL = 'http://localhost:3500/itemss'
+  const API_URL = 'http://localhost:3500/items'
   const [items,setItems] = useState([]);
   const [newItem,setNewItem] = useState('')
 
@@ -118,7 +119,7 @@ function App() {
       />
       <main>
         {isLoading ? (
-            <h5>Items Loading...</h5>
+            <ItemsLoading/>
           ) : fetchError ? (
             <Pagenotfound
               fetchError={fetchError}
