@@ -211,15 +211,10 @@ button:hover {
 }
 .pagenotfound{
   display: flex;
-  justify-content: flex-end;
-  padding-bottom: 0.2rem;
-  color: #3a8f92;
+  justify-content: center;
+  color: #ff0000;
   font-weight:bold;
-  background-image: url("../Images/pagenotfound.jpg");
-  background-size:cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
+} 
 .progress{
   display: flex;
   justify-content: center;
