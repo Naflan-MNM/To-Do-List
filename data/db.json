@@ -1,3 +1,9 @@
 {
-  "items": []
+  "items": [
+    {
+      "id": "1",
+      "checked": false,
+      "item": "i want to study git command"
+    }
+  ]
 }
