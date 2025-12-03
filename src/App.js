@@ -10,7 +10,8 @@ import Pagenotfound from "./Pagenotfound.js";
 import ItemsLoading from "./ItemsLoading.js";
 
 function App() {
-  const API_URL = "http://localhost:3500/items";
+  const ITEMS_API_URL = "http://localhost:3500/items";
+  const DELTED_API_URL = "http://localhost:3600/deleted";
   const [items, setItems] = useState([]);
   const [newItem, setNewItem] = useState("");
 
@@ -29,7 +30,7 @@ function App() {
   useEffect(() => {
     const fetchitem = async () => {
       try {
-        const response = await fetch(API_URL);
+        const response = await fetch(ITEMS_API_URL);
         if (!response.ok) {
           throw new Error("The items not found");
         }
@@ -46,6 +47,7 @@ function App() {
       (async () => await fetchitem())();
     }, 3000);
   }, []);
+
   /* patching item */
   const handleInputs = async (id) => {
     const listItems = items.map((item) =>
@@ -61,21 +63,40 @@ function App() {
       },
       body: JSON.stringify({ checked: updateData[0].checked }),
     };
-    const ITEM_URL = `${API_URL}/${id}`;
+    const ITEM_URL = `${ITEMS_API_URL}/${id}`;
     const result = await apiRequest(ITEM_URL, updateOption);
     if (result) setFetchError(result);
   };
 
   /* delete item */
   const handleTrash = async (id) => {
+    // get the deleted item
+    const deletedItem = items.find((item) => item.id === id);
+
+    // remove item from main list
     const listItems = items.filter((item) => id !== item.id);
     setItems(listItems);
 
-    const deleteOption = {
-      method: "DELETE",
+    // 1️⃣ Save deleted item into deleted.json
+    const saveDeletedOption = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(deletedItem),
     };
-    const ITEM_URL = `${API_URL}/${id}`;
+
+    const saveResult = await apiRequest(DELTED_API_URL, saveDeletedOption);
+    if (saveResult) {
+      setFetchError(saveResult);
+      return;
+    }
+
+    // 2️⃣ Delete the item from main db.json
+    const deleteOption = { method: "DELETE" };
+    const ITEM_URL = `${ITEMS_API_URL}/${id}`;
     const result = await apiRequest(ITEM_URL, deleteOption);
+
     if (result) setFetchError(result);
   };
 
@@ -102,7 +123,7 @@ function App() {
       body: JSON.stringify(addNewItem),
     };
 
-    const result = await apiRequest(API_URL, postOption);
+    const result = await apiRequest(ITEMS_API_URL, postOption);
     if (result) setFetchError(result);
   };
 
