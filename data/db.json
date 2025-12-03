@@ -4,6 +4,11 @@
       "id": "1",
       "checked": false,
       "item": "i want to study git command"
+    },
+    {
+      "id": "2",
+      "checked": false,
+      "item": "adding new features to this app like adding real time and date to the list"
     }
   ]
 }
